@@ -1,4 +1,4 @@
-package cses.mathematics;
+package cses.mathematics.divisors;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
@@ -88,7 +88,7 @@ public class P4A2CountingDivisors {
     // Time Complexity - O(log N)
     public static int countDivisors(int n) {
         int count = 1;
-        while(n != 1) {     // factorization - O(log N)
+        while(n != 1) {     // factorization when factors are known - O(log N)
             final int p = s[n];
             int e = 0;
             while(n != 1 && s[n] == p) {    // factorization - O(log N)
