@@ -72,12 +72,10 @@ public class P4CountingDivisors {
     public static final int s[] = new int[B];
 
     public static void sieveOfErasthosthenes() {
-        for(int i = 2; i < B; i++)
-            s[i] = i;
-        for(int a = 2; a * a < B; a++) {
-            if(s[a] == a) {
-                for(int j = a * a; j < B; j += a)
-                    if(s[j] == j)
+        for(int a = 2; a < B; a++) {
+            if(s[a] == 0) {
+                for(int j = a; j < B; j += a)
+                    if(s[j] == 0)
                         s[j] = a;
             }
         }
