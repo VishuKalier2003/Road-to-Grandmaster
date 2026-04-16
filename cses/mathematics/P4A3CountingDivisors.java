@@ -60,19 +60,21 @@ public class P4A3CountingDivisors {
     public static void println(Object o) {OUT.append(o).append('\n');}
     public static void flush() {PW.print(OUT); PW.flush(); OUT.setLength(0);}
     
+    // Time Complexity - O(kN log log N + Q log N)
     public static void main(String args[]) throws IOException {
         sieveOfErasthosthenes();
         int n = nextInt();
-        for(int i = 0; i < n; i++)
-            println(countDivisors(nextInt()));
+        for(int i = 0; i < n; i++)              // queries - O(Q)
+            println(countDivisors(nextInt()));      // compute - O(log N)
         flush();
     }
 
     public static final int B = 1_000_001;
     public static final int s[] = new int[B];
 
+    // Time Complexity - O(kN log log N)
     public static void sieveOfErasthosthenes() {
-        for(int a = 2; a < B; a++) {
+        for(int a = 2; a < B; a++) {        // prime sieve without squaring - O(kN log log N)
             if(s[a] == 0) {
                 for(int j = a; j < B; j += a)
                     if(s[j] == 0)
@@ -81,12 +83,13 @@ public class P4A3CountingDivisors {
         }
     }
 
+    // Time Complexity - O(log N)
     public static int countDivisors(int n) {
         int count = 1;
-        while(n != 1) {
+        while(n != 1) {     // factorization - O(log N)
             final int p = s[n];
             int e = 0;
-            while(n != 1 && s[n] == p) {
+            while(n != 1 && s[n] == p) {        // factorization - O(log N)
                 e++;
                 n /= p;
             }
