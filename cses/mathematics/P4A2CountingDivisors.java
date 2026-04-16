@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
-public class P4CountingDivisors {
+public class P4A2CountingDivisors {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
     private static final PrintWriter PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -72,13 +72,14 @@ public class P4CountingDivisors {
     public static final int s[] = new int[B];
 
     public static void sieveOfErasthosthenes() {
-        for(int a = 2; a < B; a++) {
-            if(s[a] == 0) {
-                for(int j = a; j < B; j += a)
-                    if(s[j] == 0)
+        for(int i = 2; i < B; i++)
+            s[i] = i;
+        for(int a = 2; a * a <= B; a++)
+            if(s[a] == a)
+                for(int j = a; j * j <= B; j += a) {
+                    if(s[j] == j)
                         s[j] = a;
-            }
-        }
+                }
     }
 
     public static int countDivisors(int n) {
