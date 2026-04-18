@@ -1,4 +1,4 @@
-## Divisibility of a<sup>x</sup> by b
+## Divisibility of a<sup>x</sup> by n
 
 ### Trigger
 Checking divisibility of a<sup>x</sup> by n where a<sup>x</sup> is very large
