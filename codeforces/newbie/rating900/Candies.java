@@ -46,10 +46,11 @@ public class Candies {
     }
 
     public static long solve(long n) {
-        for(int i = 2; i <= n; i++) {
-            if(n % ((2 << i) - 1) == 0)
-                return n / ((2 << i) - 1);
+        for(int k = 2; k <= 31; k++) {
+            long denom = (1l << k) - 1;
+            if(n % denom == 0)
+                return n / denom;
         }
-        return -1l;
+        return -1L;
     }
 }

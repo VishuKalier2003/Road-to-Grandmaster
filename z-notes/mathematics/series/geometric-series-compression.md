@@ -14,4 +14,4 @@ Sum of powers of 2: 1 + 2 + 4 + ... + 2<sup>k</sup> = n or doubling sequence, Sm
 ### Problems
 | S. No. | Problem | Note | Rating |
 |-|-|-|-|
-| 1. | [1343A](https://codeforces.com/problemset/problem/1343/A) | x(Sm<sub>2</sub><sup>k</sup>) = n find x | 900 |
+| 1. | [1343A](https://codeforces.com/problemset/problem/1343/A) | x(Sm<sub>2</sub><sup>k</sup>) = n find x, iterate k to 30 | 900 |
