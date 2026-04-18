@@ -5,7 +5,7 @@ Sum of powers of 2: 1 + 2 + 4 + ... + 2<sup>k</sup> = n or doubling sequence, Sm
 
 ### Key Idea
 - Reduce the sequence of GP to x(2<sup>k</sup> - 1) then iterate k instead of n
-- 2<sup>k</sup> grows exponentially, k <= 30 for int
+- 2<sup>k</sup> grows exponentially, k <= 30 for integer
 
 ### Mistake
 - Thinking as simulation
