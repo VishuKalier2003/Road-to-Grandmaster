@@ -68,20 +68,18 @@ public class BingoCandies {
         for(int i = 0; i < n; i++) {
             Map<Integer, Integer> mp = new HashMap<>();
             int q = nextInt();
+            int max = -1;
             for(int j = 0; j < q * q; j++) {
                 int candy = nextInt();
                 mp.put(candy, mp.getOrDefault(candy, 0) + 1);
+                max = Math.max(max, mp.get(candy));     // input-time max evaluation
             }
-            println(solve(mp, q) ? "Yes" : "No");
+            println(solve(max, q) ? "Yes" : "No");
         }
         flush();
     }
 
-    public static boolean solve(Map<Integer, Integer> mp, int n) {
-        int max = -1;
-        for(int a : mp.values())
-            if(a > max)
-                max = a;
+    public static boolean solve(int max, int n) {
         return max <= (n * n) - n;
     }
 }

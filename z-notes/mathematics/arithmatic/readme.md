@@ -1,0 +1,4 @@
+## Arithmetic Patterns
+
+### Patterns table
+- 
