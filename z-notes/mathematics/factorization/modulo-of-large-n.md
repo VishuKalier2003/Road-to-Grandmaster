@@ -1,11 +1,11 @@
-## Divisibility of a<super>x</super> by b
+## Divisibility of a<sub>x</sub> by b
 
 ### Trigger
-Checking divisibility of a<super>x</super> by n where a<super>x</super> is very large
+Checking divisibility of a<sub>x</sub> by n where a<sub>x</sub> is very large
 
 ### Key Idea
-- Do not do simple modulo, find radical (product of distinct prime factors) of both a<super>x</super> and n
-- Each prime factor of n must have power lower than that of corresponding distinct prime factor a<super>x</super>.
+- Do not do simple modulo, find radical (product of distinct prime factors) of both a<sub>x</sub> and n
+- Each prime factor of n must have power lower than that of corresponding distinct prime factor a<sub>x</sub>.
 
 ### Mistake
 - Trying simple modulo or thinking binary search
