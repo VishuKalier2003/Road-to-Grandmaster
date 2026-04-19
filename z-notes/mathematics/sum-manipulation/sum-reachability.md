@@ -7,6 +7,9 @@ A number x can be added into the array in or k times to reach sum s
 - Sum is commutative (a+b) = (b+a)
 - So we can sum the entire array as precomputation
 
+### One Liner
+Addition is cumulative, so can be performed at any time (preferrably first or last)
+
 ### Mistake
 - Thinking in which element to add sum
 

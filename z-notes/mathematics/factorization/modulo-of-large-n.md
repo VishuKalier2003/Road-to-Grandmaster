@@ -7,6 +7,9 @@ Checking divisibility of a<sup>x</sup> by n where a<sup>x</sup> is very large
 - Do not do simple modulo, find radical (product of distinct prime factors) of both a<sup>x</sup> and n
 - Each prime factor of n must have power lower than that of corresponding distinct prime factor a<sup>x</sup>.
 
+### One Liner
+- distinct prime factor power checking
+
 ### Mistake
 - Trying simple modulo or thinking binary search
 

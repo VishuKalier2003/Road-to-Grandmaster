@@ -7,6 +7,9 @@ Sum of powers of 2: 1 + 2 + 4 + ... + 2<sup>k</sup> = n or doubling sequence, Sm
 - Reduce the sequence of GP to x(2<sup>k</sup> - 1) then iterate k instead of n
 - 2<sup>k</sup> grows exponentially, k <= 30 for integer
 
+### One Liner
+GP sum formula
+
 ### Mistake
 - Thinking as simulation
 - Thinking as binary search or adhoc on n

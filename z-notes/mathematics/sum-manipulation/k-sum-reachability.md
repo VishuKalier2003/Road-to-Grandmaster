@@ -7,6 +7,9 @@ Out of n elements of array, choose k elements to sum and reach a target, is targ
 - If order doesn't matter and elements are flexible, think in terms of range, not combinatorics
 - Replace selection with range check
 
+### One Liner
+If order doesn't matter think of range (greedy) not selecting (dp)
+
 ### Mistake
 - Which k numbers should I take?
 
