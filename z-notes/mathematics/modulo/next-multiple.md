@@ -17,3 +17,4 @@ Need to make a divisible by b
 | S.No. | Problem | Note | Rating |
 |-|-|-|-|
 | 1. | [1328A](https://codeforces.com/problemset/problem/1328/A) | increment by 1 to make divisible | 800 |
+| 2. | [732A](https://codeforces.com/problemset/problem/732/A) | modulo cycle divisibility check | 800 |
