@@ -17,3 +17,4 @@ Multiple type of operations (sum, product, etc.) and satisfying parity
 | S.No. | Problem | Note | Rating |
 |-|-|-|-|
 | 1. | [1834A](https://codeforces.com/problemset/problem/1834/A) | two operations, sum and product | 800 |
+| 2. | [1977A](https://codeforces.com/problemset/problem/1977/A) | two operations, +1 and -1 | 800 |
