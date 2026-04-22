@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
-// https://codeforces.com/problemset/problem/4/A
-public class Watermelon {
+// https://codeforces.com/problemset/problem/1348/A
+public class Phoenix {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
     private static final PrintWriter PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -26,8 +26,22 @@ public class Watermelon {
     public static void println(Object o) {OUT.append(o).append('\n');}
     public static void flush() {PW.print(OUT); PW.flush();}
     public static void main(String[] args) throws IOException {
-        int n = nextInt();
-        println(n > 2 && (n & 1) == 0 ? "YES" : "NO");
+        int t = nextInt();
+        while(t-->0) {
+            int n = nextInt();
+            int s1 = 0, s2 = 0, q2 = n/2;
+            if(n == 2) {
+                println("2");
+                continue;
+            }
+            for(int i = 1; i <= n; i++) {
+                if(i <= q2-1 || i == n)
+                    s1 += (1 << i);
+                else
+                    s2 += (1 << i);
+            }
+            println(Math.abs(s1-s2));
+        }
         flush();
     }
 }
