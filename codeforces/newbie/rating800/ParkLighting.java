@@ -1,4 +1,4 @@
-package codeforces.newbie.rating1000;
+package codeforces.newbie.rating800;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
@@ -6,9 +6,9 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.util.Arrays;
 
-public class Offshores {
+// https://codeforces.com/problemset/problem/1358/A
+public class ParkLighting {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
     private static final PrintWriter PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -41,23 +41,9 @@ public class Offshores {
     public static void main(String args[]) throws IOException {
         int t = nextInt();
         while(t-->0) {
-            int n = nextInt(), x = nextInt(), y = nextInt();
-            int nums[] = new int[n];
-            for(int i = 0; i < n; i++)
-                nums[i] = nextInt();
+            int n = nextInt(), m = nextInt();
+            println((int)(Math.ceil((n*m+1)/2)));
         }
         flush();
-    }
-
-    public static long solve(int n, int x, int y, int nums[]) {
-        long data[][] = new long[n][2];
-        for(int i = 0; i < n; i++) {
-            long p = nums[i]/x;
-            data[i][0] = p*x;
-            data[i][1] = p*(x-y);
-        }
-        Arrays.sort(data, (a,b) -> Long.compare(a[1], b[1]));
-        
-        return 0l;
     }
 }
