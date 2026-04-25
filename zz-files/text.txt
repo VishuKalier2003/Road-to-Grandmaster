@@ -1,0 +1,63 @@
+Do this after thoroughly reading the problem statement and my solution- Understand my experience with this question, what i thought and what I did-
+
+1. I thought about using sorting and was internally visualizing about when would ceil give larger sum if the values at decimal add upto more than 0.5, guess this wasn't supposed to be thought. 
+
+
+
+And then do this- I am building a pattern recognition structure on codeforces, for I am aiming for Legendary grandmaster, and I want you to ask yourself and accessing the entire internet and world of Competitive Programming, do this-
+
+1. Is this problem a repeated pattern?
+
+2. What type of pattern and the characteristics of the pattern, give the details in a tabular format?
+
+3. Generalize the approach and the algorithm for using it in other questions.
+
+4. In which rating range I am expected to find this pattern? For pattern recognition I use this template and Fill the template for this question as per your deduction, Should it be a separate pattern or merged with an existing one.-
+
+
+
+Digits
+
+
+
+Trigger 
+
+Breaking a number into its digits
+
+
+
+Key Idea 
+
+- use % 10 and / 10 to extract digits from right side
+
+
+
+One Liner 
+
+- finding digits of number
+
+
+
+Mistake - Not now
+
+
+
+Problems | [[[S.No](http://S.No)](http://S.No)](http://S.No). | Problem | Note | Rating |
+
+|-|-|-|-| | 1. | [1352A](https://codeforces.com/problemset/problem/1352/A) | creating number with least + operations | 800 | 
+
+
+
+Lastly do this-
+
+1. Guide me what I did wrong
+
+2. What should I understand from this problem
+
+3. How to fix my error
+
+4. Any suggestions from your end
+
+5. Also is this pattern similar to any other patterns that we have been discussed in the repo subfolder - https://github.com/VishuKalier2003/Road-to-Grandmaster/tree/main/z-notes and?
+
+The relative paths to the files are as follows, use these thorougly before answering the fourth question-
