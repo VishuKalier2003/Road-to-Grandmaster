@@ -14,6 +14,7 @@ Addition is cumulative, so can be performed at any time (preferrably first or la
 
 ### Lemma
 
+How many multiples of k or frequency of k fits in window of size m,
     freq(k) in [0, m] = floor(m/k) + 1
     freq(k) in (0, m) = floor(m/k)
 
