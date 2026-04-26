@@ -1,7 +1,9 @@
-## Sum Reachability
+## Range Overlap
 
 ### Trigger
-A number x can be added into the array in or k times to reach sum s
+- A number x can be added into the array in or k times to reach sum s
+- checking two ranges are overlapping or not
+- number of times of occurence of number x in a range
 
 ### Key Idea
 - Sum is commutative (a+b) = (b+a)
@@ -10,6 +12,11 @@ A number x can be added into the array in or k times to reach sum s
 ### One Liner
 Addition is cumulative, so can be performed at any time (preferrably first or last)
 
+### Lemma
+
+    freq(k) in [0, m] = floor(m/k) + 1
+    freq(k) in (0, m) = floor(m/k)
+
 ### Mistake
 - Thinking in which element to add sum
 
@@ -17,3 +24,4 @@ Addition is cumulative, so can be performed at any time (preferrably first or la
 | S.No. | Problem | Note | Rating |
 |-|-|-|-|
 | 1. | [2193A](https://codeforces.com/problemset/problem/2193/A) | add x to a<sub>i</sub> | 800 |
+| 2. | [1341A](https://codeforces.com/problemset/problem/1341/A) | range overlap | 900 |
