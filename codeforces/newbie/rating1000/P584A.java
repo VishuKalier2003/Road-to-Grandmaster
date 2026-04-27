@@ -1,5 +1,3 @@
-package codeforces.newbie.rating900;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
@@ -7,7 +5,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
-public class Gcd1617B {
+// https://codeforces.com/problemset/problem/584/A
+public class P584A {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
     private static final PrintWriter PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -38,21 +37,17 @@ public class Gcd1617B {
     public static void flush() {PW.print(OUT); PW.flush();}
 
     public static void main(String args[]) throws IOException {
-        int t = nextInt();
-        while(t-->0) {
-            int n = nextInt() - 1;
-            for(int i = 2; i <= 29; i++) {
-                if(gcd(i, n-1) == 1) {
-                    println((n-i)+" "+i+" "+1);
-                    break;
-                }
-            }
-        }
+        int n = nextInt(), t = nextInt(), x = digits(t);
+        println(n < x ? "-1" : t+"0".repeat(n-x));
         flush();
     }
 
-    public static int gcd(int a, int b) {
-        if(b == 0) return a;
-        return gcd(b, a % b);
+    public static int digits(int num) {
+        int x = 0;
+        while(num > 0) {
+            x++;
+            num /= 10;
+        }
+        return x;
     }
 }

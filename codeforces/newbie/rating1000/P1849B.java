@@ -1,13 +1,13 @@
-package codeforces.newbie.rating900;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.Comparator;
 
-public class Gcd1617B {
+public class P1849B {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
     private static final PrintWriter PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -39,20 +39,26 @@ public class Gcd1617B {
 
     public static void main(String args[]) throws IOException {
         int t = nextInt();
-        while(t-->0) {
-            int n = nextInt() - 1;
-            for(int i = 2; i <= 29; i++) {
-                if(gcd(i, n-1) == 1) {
-                    println((n-i)+" "+i+" "+1);
-                    break;
-                }
+        while(t-- > 0) {
+            int n = nextInt(), k = nextInt();
+            int nums[][] = new int[n][2];
+            for(int i = 0; i < n; i++) {
+                nums[i][0] = i;
+                nums[i][1] = nextInt();
             }
+            println(solve(n, k, nums));
         }
         flush();
     }
 
-    public static int gcd(int a, int b) {
-        if(b == 0) return a;
-        return gcd(b, a % b);
+    public static String solve(int n, int k, int nums[][]) {
+        for(int i = 0; i < n; i++)
+            nums[i][1] = nums[i][1] % k == 0 ? k : nums[i][1] % k;
+        // Comparing via lambda
+        Arrays.sort(nums, Comparator.comparingInt((int x[]) -> x[1]).reversed().thenComparingInt(x -> x[0]));
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < n; i++)
+            sb.append(nums[i][0]+1).append(" ");
+        return sb.toString();
     }
 }

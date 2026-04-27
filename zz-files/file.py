@@ -1,7 +1,7 @@
 import requests
 from collections import defaultdict
 
-res = requests.get("https://codeforces.com/api/problemset.problems?tags=math").json()
+res = requests.get("https://codeforces.com/api/problemset.problems?tags=constructive algorithms").json()
 problems = {(p['contestId'], p['index']): p for p in res['result']['problems']}
 stats = {(s['contestId'], s['index']): s['solvedCount'] for s in res['result']['problemStatistics']}
 

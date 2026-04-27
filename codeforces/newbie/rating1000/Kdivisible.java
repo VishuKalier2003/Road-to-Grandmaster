@@ -1,4 +1,4 @@
-package codeforces.newbie.rating900;
+package codeforces.newbie.rating1000;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
@@ -7,7 +7,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
-public class Gcd1617B {
+// https://codeforces.com/problemset/problem/1476/A
+public class Kdivisible {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
     private static final PrintWriter PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -40,19 +41,14 @@ public class Gcd1617B {
     public static void main(String args[]) throws IOException {
         int t = nextInt();
         while(t-->0) {
-            int n = nextInt() - 1;
-            for(int i = 2; i <= 29; i++) {
-                if(gcd(i, n-1) == 1) {
-                    println((n-i)+" "+i+" "+1);
-                    break;
-                }
-            }
+            println(solve(nextInt(), nextInt()));
         }
         flush();
     }
 
-    public static int gcd(int a, int b) {
-        if(b == 0) return a;
-        return gcd(b, a % b);
+    public static long solve(int n, int k) {
+        int t = (n + k - 1) / k;        // Ceiling n/k
+        long s = t * k * 1l;
+        return (s + n - 1l) / n;        // Ceiling s/n
     }
 }
