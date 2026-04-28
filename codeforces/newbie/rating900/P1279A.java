@@ -6,9 +6,9 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.util.Arrays;
 
-// https://codeforces.com/problemset/problem/1016/A
-public class P1016A {
+public class P1279A {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
     private static final PrintWriter PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -39,14 +39,15 @@ public class P1016A {
     public static void flush() {PW.print(OUT); PW.flush();}
 
     public static void main(String args[]) throws IOException {
-        int n = nextInt(), m = nextInt(), r = 0;
-        for(int i = 0; i < n; i++) {
-            int x = nextInt();
-            r += x;
-            print((r/m)+" ");
-            r %= m;
+        int t = nextInt();
+        while(t-->0) {
+            println(solve(new int[]{nextInt(), nextInt(), nextInt()}) ? "No" : "Yes");
         }
-        println("");
         flush();
+    }
+
+    public static boolean solve(int nums[]) {
+        Arrays.sort(nums);
+        return nums[2] > nums[1] + nums[0] + 1;
     }
 }
