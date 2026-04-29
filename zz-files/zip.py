@@ -58,5 +58,5 @@ def create_zip(root_dir, output_zip="llm_ready_bundle.zip"):
 
 # USAGE
 if __name__ == "__main__":
-    folder_path = "/Users/vishu.kalier@zomato.com/Desktop/CP/Road-to-Grandmaster/Road-to-Grandmaster/z-notes"  # change this
+    folder_path = "/Users/vishu.kalier@zomato.com/Desktop/CP/Road-to-Grandmaster/Road-to-Grandmaster/z-cp-notes"  # change this
     create_zip(folder_path)

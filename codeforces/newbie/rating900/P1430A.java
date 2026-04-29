@@ -1,4 +1,4 @@
-//package codeforces.newbie.rating900;
+package codeforces.newbie.rating900;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
