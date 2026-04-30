@@ -1,4 +1,4 @@
-package codeforces.newbie.rating1000;
+package codeforces.newbie.rating900;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
@@ -6,12 +6,8 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
-// https://codeforces.com/contest/2203/problem/B
-public class Beautiful {
+public class P1257B {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
     private static final PrintWriter PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -25,14 +21,16 @@ public class Beautiful {
         return neg ? -x : x;
     }
 
-    public static String next() throws IOException {
+    public static long nextLong() throws IOException {
         int c;
-        do {c = IN.read();} while(c < ' ');
-        StringBuilder sb = new StringBuilder();
+        long x = 0l;
+        do{c = IN.read();} while(c < ' ');
+        boolean neg = c == '-';
+        if(neg) c = IN.read();
         do {
-            sb.append((char)c);
-        } while((c = IN.read()) > ' ');
-        return sb.toString();
+            x = x * 10 + (c - '0');
+        } while ((c = IN.read()) >= '0');
+        return neg ? -x : x;
     }
 
     public static void print(Object o) {OUT.append(o);}
@@ -42,24 +40,16 @@ public class Beautiful {
     public static void main(String args[]) throws IOException {
         int t = nextInt();
         while(t-->0) {
-            println(solve(next()));
+            int x = nextInt(), y = nextInt();
+            if(x > 3)
+                println("YES");
+            else if(x == 1)
+                println(y == 1 ? "YES" : "NO");
+            else if(y <= 3)
+                println("YES");
+            else
+                println("NO");
         }
         flush();
-    }
-
-    public static int solve(String s) {
-        List<Integer> lst = new ArrayList<>();
-        int sum = 0, c = 0;
-        for(int i = 0; i < s.length(); i++) {
-            int d = s.charAt(i) - '0';
-            sum+=d;
-            if(i == 0)
-                d--;
-            lst.add(d);
-        }
-        Collections.sort(lst);
-        for(int i = lst.size()-1; i >= 0 && sum > 9; i--, c++)
-            sum -= lst.get(i);
-        return c;
     }
 }

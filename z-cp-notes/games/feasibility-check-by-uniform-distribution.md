@@ -20,7 +20,7 @@ When asked whether a construction is possible under a limit like-
 - In case of coloring, the opponent will try to color all differently colors blocks into the maximum color block present
 
 ### One Liner
-- Find the bottleneck or when the limit when the opponent can break the bucket
+- Find the repair possible after evenly distributing the buckets on basis of constraints
 
 ### Problem
 

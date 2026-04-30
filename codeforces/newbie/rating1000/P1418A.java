@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
-// https://codeforces.com/problemset/problem/1476/A
-public class Kdivisible {
+// https://codeforces.com/problemset/problem/1418/A
+public class P1418A {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
     private static final PrintWriter PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -41,14 +41,14 @@ public class Kdivisible {
     public static void main(String args[]) throws IOException {
         int t = nextInt();
         while(t-->0) {
-            println(solve(nextInt(), nextInt()));
+            long x = nextLong(), y = nextLong(), k = nextLong();
+            println(solve(x, y, k));
         }
         flush();
     }
 
-    public static long solve(int n, int k) {
-        int t = (n + k - 1) / k;        // Ceiling n/k
-        long s = t * k * 1l;
-        return (s + n - 1l) / n;        // Ceiling s/n
+    public static long solve(long x, long y, long k) {
+        long s = (y * k) + k - 1;
+        return ((s + x - 2)/(x-1)) + k;
     }
 }
