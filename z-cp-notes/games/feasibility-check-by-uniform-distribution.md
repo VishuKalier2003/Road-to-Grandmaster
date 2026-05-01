@@ -28,4 +28,4 @@ Related problems are given below-
 
 | S. No. | Problem Name | Problem | Rating |
 |-|-|-|-|
-| 1. | Paint the Ribbon | [1954A](https://codeforces.com/problemset/problem/1954/A) | 900 |
+| 1. | Paint the Ribbon | [1954A](https://codeforces.com/problemset/problem/1954/A) | 1000 |
