@@ -1,4 +1,4 @@
-package codeforces.newbie.rating900;
+package codeforces.newbie.rating1000;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
-public class P1257B {
+public class P1121A {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
     private static final PrintWriter PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -39,16 +39,14 @@ public class P1257B {
 
     public static void main(String args[]) throws IOException {
         int t = nextInt();
-        while(t-->0) {
-            int x = nextInt(), y = nextInt();
-            if(x > 3)
-                println("YES");
-            else if(x == 1)
-                println(y == 1 ? "YES" : "NO");
-            else if(y <= 3)
-                println("YES");
-            else
-                println("NO");
+        while(t-- > 0) {
+            int n = nextInt();
+            int sum = 0;
+            for(int i = 0; i < n; i++) {
+                int x = nextInt();
+                sum += x <= 2048 ? x : 0;
+            }
+            println(sum >= 2048 ? "YES" : "NO");
         }
         flush();
     }
