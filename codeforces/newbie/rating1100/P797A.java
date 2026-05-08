@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
-// https://codeforces.com/problemset/problem/630/C
-public class P630C {
+// https://codeforces.com/problemset/problem/797/A
+public class P797A {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
     private static final PrintWriter PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -49,22 +49,23 @@ public class P630C {
     public static void flush() {PW.print(OUT); PW.flush();}
 
     public static void main(String args[]) throws IOException {
-        println(solve(nextInt()));
+        println(solve(nextInt(), nextInt()));
         flush();
     }
 
-    public static long solve(int n) {
-        return 2l * (exp(2l, n+0l) - 1l);
-    }
-
-    public static long exp(long a, long b) {
-        long res = 1l;
-        while(b > 0) {
-            if((b & 1) == 1)
-                res *= a;
-            a *= a;
-            b >>= 1;
+    public static String solve(int n, int k) {
+        StringBuilder sb = new StringBuilder();
+        for(int i = 2; i * i <= n; i++) {
+            while(n % i == 0 && k > 1) {
+                n /= i;
+                k--;
+                sb.append(i).append(" ");
+            }
+            if(k == 1)
+                break;
         }
-        return res;
+        if(k > 1)
+            return "-1";
+        return sb.append(n).toString();
     }
 }
