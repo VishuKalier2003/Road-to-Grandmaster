@@ -64,7 +64,7 @@ public class P797A {
             if(k == 1)
                 break;
         }
-        if(k > 1)
+        if(k > 1 || n == 1)
             return "-1";
         return sb.append(n).toString();
     }
