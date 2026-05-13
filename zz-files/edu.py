@@ -25,11 +25,11 @@ for p in problems:
         continue
 
     # Rating filter
-    if not (900 <= p['rating'] <= 1200):
+    if not (1200 <= p['rating'] <= 1300):
         continue
 
     # Tag filter
-    if 'math' not in p.get('tags', []):
+    if 'dp' not in p.get('tags', []):
         continue
 
     filtered.append({
