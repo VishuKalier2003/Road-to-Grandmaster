@@ -25,7 +25,7 @@ for p in problems:
         continue
 
     # Rating filter
-    if not (1200 <= p['rating'] <= 1300):
+    if not (1400 <= p['rating'] <= 1500):
         continue
 
     # Tag filter
