@@ -1,4 +1,4 @@
-//package codeforces.specialist.rating1400;
+package codeforces.specialist.rating1400;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
