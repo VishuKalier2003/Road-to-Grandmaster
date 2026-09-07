@@ -46,6 +46,7 @@ A pattern where the problem asks to find the count of sub-arrays of specific con
 ##### Technique
     - Store the frequency of occurence of each prefix in a map M
     - We know P<sub>r</sub> - P<sub>l</sub> = T is the rule to be followed, P<sub>l</sub> = P<sub>r</sub> - T
+    - Check happens before the update
     - Initially 0 occurs once and evaluate P<sub>l</sub> as we are sliding the r boundary and want to check if there is any l that satisfies the rule F
     - If rule F is satisfied, update the answer
     - Keep updating the map M as we traverse
