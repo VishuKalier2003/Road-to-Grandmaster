@@ -1,4 +1,4 @@
-package sheets.Preliminary.GreedyAndExchange;
+package sheets.Preliminary.Invariants;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
@@ -6,10 +6,10 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
-
-// https://cses.fi/problemset/task/1090
+// https://cses.fi/problemset/task/1092/
 public class P1 {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
@@ -51,27 +51,32 @@ public class P1 {
     public static void flush() {PW.print(OUT); PW.flush();}
 
     public static void main(String args[]) throws IOException {
-        int n = nextInt(), x = nextInt();
-        int nums[] = new int[n];
-        for(int i = 0; i < n; i++)
-            nums[i] = nextInt();
-        print(solve(nums, n, x));
+        print(solve(nextInt()));
         flush();
     }
 
-    private static int solve(int nums[], int n, int x) {
-        // sort
-        Arrays.sort(nums);
-        // always prove swapping any out-of-order adjacent pair never improves the answer
-        int ans = 0, l = 0, r = n-1;
-        // sort by right key
-        while(l <= r) {
-            if(nums[l] + nums[r] <= x) {
-                l++;
-            }
-            r--;
-            ans++;
+    private static String solve(int n) {
+        if(n % 4 == 2 || n % 4 == 1)
+            return "NO\n";
+        Set<Integer> s1 = new HashSet<>(), s2 = new HashSet<>();
+        if(n % 4 == 3) {
+            s1.add(1);
+            s1.add(2);
+            s2.add(3);
         }
-        return ans;
+        for(int i = n % 4 == 3 ? 4 : 1; i <= n; i += 4) {
+            s1.add(i);
+            s1.add(i + 3);
+            s2.add(i + 1);
+            s2.add(i + 2);
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("YES\n").append(s1.size()).append("\n");
+        for(int a : s1)
+            sb.append(a).append(" ");
+        sb.append("\n").append(s2.size()).append("\n");
+        for(int a : s2)
+            sb.append(a).append(" ");
+        return sb.toString();
     }
 }

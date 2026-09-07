@@ -1,4 +1,4 @@
-package sheets.Preliminary.GreedyAndExchange;
+package sheets.Preliminary.Invariants;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
@@ -6,11 +6,9 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.util.Arrays;
+import java.util.PriorityQueue;
 
-
-// https://cses.fi/problemset/task/1090
-public class P1 {
+public class P6 {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
     private static final PrintWriter PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -51,27 +49,40 @@ public class P1 {
     public static void flush() {PW.print(OUT); PW.flush();}
 
     public static void main(String args[]) throws IOException {
-        int n = nextInt(), x = nextInt();
+        int n = nextInt();
         int nums[] = new int[n];
         for(int i = 0; i < n; i++)
             nums[i] = nextInt();
-        print(solve(nums, n, x));
+        print(solve(n, nums));
         flush();
     }
 
-    private static int solve(int nums[], int n, int x) {
-        // sort
-        Arrays.sort(nums);
-        // always prove swapping any out-of-order adjacent pair never improves the answer
-        int ans = 0, l = 0, r = n-1;
-        // sort by right key
-        while(l <= r) {
-            if(nums[l] + nums[r] <= x) {
-                l++;
-            }
-            r--;
-            ans++;
+    private static String solve(int n, int nums[]) {
+    StringBuilder sb = new StringBuilder();
+    PriorityQueue<int[]> heap = new PriorityQueue<>((a, b) -> Integer.compare(b[0], a[0]));
+    for (int i = 0; i < n; i++)
+        heap.add(new int[]{nums[i], i});
+    long total = 0;
+    while (!heap.isEmpty()) {
+        // top[0] = remaining degree, top[1] = player ID
+        int[] top = heap.poll();
+        int degree = top[0];
+        if (degree > heap.size())
+            return "IMPOSSIBLE";
+        int[][] selected = new int[degree][];
+        for (int i = 0; i < degree; i++) {
+            selected[i] = heap.poll();
+            if (selected[i][0] <= 0)
+                return "IMPOSSIBLE";
+            sb.append(top[1] + 1).append(" ").append(selected[i][1] + 1).append("\n");
+            selected[i][0]--;
+            total++;
         }
-        return ans;
+        // ONLY NOW put them back
+        for (int i = 0; i < degree; i++)
+            if (selected[i][0] > 0)
+                heap.add(selected[i]);
+        }
+        return total + "\n" + sb;
     }
 }

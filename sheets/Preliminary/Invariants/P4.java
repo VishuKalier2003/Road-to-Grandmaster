@@ -1,4 +1,4 @@
-package sheets.Preliminary.GreedyAndExchange;
+package sheets.Preliminary.Invariants;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
@@ -6,11 +6,11 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.util.Arrays;
+import java.util.Set;
+import java.util.TreeSet;
 
-
-// https://cses.fi/problemset/task/1090
-public class P1 {
+// https://cses.fi/problemset/task/1730/
+public class P4 {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
     private static final PrintWriter PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -51,27 +51,29 @@ public class P1 {
     public static void flush() {PW.print(OUT); PW.flush();}
 
     public static void main(String args[]) throws IOException {
-        int n = nextInt(), x = nextInt();
-        int nums[] = new int[n];
-        for(int i = 0; i < n; i++)
-            nums[i] = nextInt();
-        print(solve(nums, n, x));
+        int n = nextInt(), k = nextInt();
+        TreeSet<Integer> nums = new TreeSet<>();
+        for(int i = 0; i < k; i++)
+            nums.add(nextInt());
+        print(solve(n, nums));
         flush();
     }
 
-    private static int solve(int nums[], int n, int x) {
-        // sort
-        Arrays.sort(nums);
-        // always prove swapping any out-of-order adjacent pair never improves the answer
-        int ans = 0, l = 0, r = n-1;
-        // sort by right key
-        while(l <= r) {
-            if(nums[l] + nums[r] <= x) {
-                l++;
+    public static String solve(int n, Set<Integer> nums) {
+        StringBuilder sb = new StringBuilder();
+        boolean dp[] = new boolean[n+1];
+        for(int i = 1; i <= n; i++) {
+            for(int num : nums) {
+                if(num > i)
+                    continue;
+                if(!dp[i - num]) {
+                    dp[i] = true;
+                    break;
+                }
             }
-            r--;
-            ans++;
         }
-        return ans;
+        for(int i = 1; i <= n; i++)
+            sb.append(dp[i] ? 'W' : 'L');
+        return sb.toString();
     }
 }

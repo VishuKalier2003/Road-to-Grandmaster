@@ -1,4 +1,4 @@
-package sheets.Preliminary.GreedyAndExchange;
+package sheets.Preliminary.Invariants;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
@@ -6,11 +6,9 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.util.Arrays;
 
-
-// https://cses.fi/problemset/task/1090
-public class P1 {
+// https://cses.fi/problemset/task/2214
+public class P5 {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
     private static final PrintWriter PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -51,27 +49,28 @@ public class P1 {
     public static void flush() {PW.print(OUT); PW.flush();}
 
     public static void main(String args[]) throws IOException {
-        int n = nextInt(), x = nextInt();
-        int nums[] = new int[n];
-        for(int i = 0; i < n; i++)
-            nums[i] = nextInt();
-        print(solve(nums, n, x));
+        print(solve(nextLong(), nextLong()));
         flush();
     }
 
-    private static int solve(int nums[], int n, int x) {
-        // sort
-        Arrays.sort(nums);
-        // always prove swapping any out-of-order adjacent pair never improves the answer
-        int ans = 0, l = 0, r = n-1;
-        // sort by right key
-        while(l <= r) {
-            if(nums[l] + nums[r] <= x) {
-                l++;
+    private static String solve(long n, long k) {
+        final StringBuilder sb = new StringBuilder();
+        long ans[] = new long[(int)(n+1)];
+        long x = n;
+        while(k > 0) {
+            long max = x-1;
+            if(k > max) {
+                ans[(int)(n-max)] = x;
+                k -= max;
             }
-            r--;
-            ans++;
+            else {
+                ans[(int)(n-k)] = x;
+                k = 0;
+            }
+            x--;
         }
-        return ans;
+        for(int i = 1, t = 1; i <= n; i++)
+            sb.append(ans[i] == 0 ? t++ : ans[i]).append(" ");
+        return sb.toString();
     }
 }

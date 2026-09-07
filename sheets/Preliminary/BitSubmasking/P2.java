@@ -1,4 +1,4 @@
-package sheets.Preliminary.GreedyAndExchange;
+package sheets.Preliminary.BitSubmasking;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
@@ -6,11 +6,8 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.util.Arrays;
 
-
-// https://cses.fi/problemset/task/1090
-public class P1 {
+public class P2 {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
     private static final PrintWriter PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -51,27 +48,19 @@ public class P1 {
     public static void flush() {PW.print(OUT); PW.flush();}
 
     public static void main(String args[]) throws IOException {
-        int n = nextInt(), x = nextInt();
-        int nums[] = new int[n];
-        for(int i = 0; i < n; i++)
-            nums[i] = nextInt();
-        print(solve(nums, n, x));
+        print(solve(nextLong()));
         flush();
     }
 
-    private static int solve(int nums[], int n, int x) {
-        // sort
-        Arrays.sort(nums);
-        // always prove swapping any out-of-order adjacent pair never improves the answer
-        int ans = 0, l = 0, r = n-1;
-        // sort by right key
-        while(l <= r) {
-            if(nums[l] + nums[r] <= x) {
-                l++;
-            }
-            r--;
-            ans++;
+    private static long solve(long n) {
+        long sum = 0l, N = n+1;
+        for(long bit = 1l; bit <= n; bit <<= 1l) {
+            long cycle = bit << 1l;
+            long full = N / cycle;
+            long rem = N % cycle;
+            sum += full * bit;
+            sum += Math.max(0, rem - bit);
         }
-        return ans;
+        return sum;
     }
 }

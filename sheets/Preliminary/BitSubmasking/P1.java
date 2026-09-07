@@ -1,4 +1,4 @@
-package sheets.Preliminary.GreedyAndExchange;
+package sheets.Preliminary.BitSubmasking;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
@@ -6,10 +6,8 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.util.Arrays;
 
-
-// https://cses.fi/problemset/task/1090
+// https://cses.fi/problemset/task/1617/
 public class P1 {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
@@ -51,27 +49,15 @@ public class P1 {
     public static void flush() {PW.print(OUT); PW.flush();}
 
     public static void main(String args[]) throws IOException {
-        int n = nextInt(), x = nextInt();
-        int nums[] = new int[n];
-        for(int i = 0; i < n; i++)
-            nums[i] = nextInt();
-        print(solve(nums, n, x));
+        print(solve(nextLong()));
         flush();
     }
 
-    private static int solve(int nums[], int n, int x) {
-        // sort
-        Arrays.sort(nums);
-        // always prove swapping any out-of-order adjacent pair never improves the answer
-        int ans = 0, l = 0, r = n-1;
-        // sort by right key
-        while(l <= r) {
-            if(nums[l] + nums[r] <= x) {
-                l++;
-            }
-            r--;
-            ans++;
-        }
-        return ans;
+    private static long solve(long n) {
+        final int MOD = 1_000_000_007;
+        long s = 1l;
+        for(int i = 1; i <= n; i++)
+            s = ((s*2) % MOD) % MOD;
+        return s;
     }
 }

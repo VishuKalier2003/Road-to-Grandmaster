@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.TreeMap;
 
-
-// https://cses.fi/problemset/task/1090
-public class P1 {
+// https://cses.fi/problemset/task/1632/
+public class P7 {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
     private static final PrintWriter PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -51,27 +51,35 @@ public class P1 {
     public static void flush() {PW.print(OUT); PW.flush();}
 
     public static void main(String args[]) throws IOException {
-        int n = nextInt(), x = nextInt();
-        int nums[] = new int[n];
-        for(int i = 0; i < n; i++)
-            nums[i] = nextInt();
-        print(solve(nums, n, x));
+        int n = nextInt(), k = nextInt();
+        int nums[][] = new int[n][2];
+        for(int i = 0; i < n; i++) {
+            nums[i][0] = nextInt();
+            nums[i][1] = nextInt();
+        }
+        print(solve(n, nums, k));
         flush();
     }
 
-    private static int solve(int nums[], int n, int x) {
-        // sort
-        Arrays.sort(nums);
-        // always prove swapping any out-of-order adjacent pair never improves the answer
-        int ans = 0, l = 0, r = n-1;
-        // sort by right key
-        while(l <= r) {
-            if(nums[l] + nums[r] <= x) {
-                l++;
+    private static long solve(int n, int nums[][], int k) {
+        Arrays.sort(nums, (a, b) -> Integer.compare(a[1], b[1]));
+        long cnt = 0l;
+        TreeMap<Integer, Integer> availability = new TreeMap<>();
+        availability.put(0, k);
+        for(int i = 0; i < n; i++) {
+            int s = nums[i][0], e = nums[i][1];
+            Integer key = availability.floorKey(s);
+            if(key == null) {
+                continue;
             }
-            r--;
-            ans++;
+            int freq = availability.get(key);
+            if(freq == 1)
+                availability.remove(key);
+            else
+                availability.put(key, freq - 1);
+            availability.put(e, availability.getOrDefault(e, 0) + 1);
+            cnt++;
         }
-        return ans;
+        return cnt;
     }
 }

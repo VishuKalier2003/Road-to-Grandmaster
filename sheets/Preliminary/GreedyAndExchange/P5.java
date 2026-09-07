@@ -8,9 +8,8 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.Arrays;
 
-
-// https://cses.fi/problemset/task/1090
-public class P1 {
+// https://cses.fi/problemset/task/1074/
+public class P5 {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
     private static final PrintWriter PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -51,27 +50,21 @@ public class P1 {
     public static void flush() {PW.print(OUT); PW.flush();}
 
     public static void main(String args[]) throws IOException {
-        int n = nextInt(), x = nextInt();
+        int n = nextInt();
         int nums[] = new int[n];
         for(int i = 0; i < n; i++)
             nums[i] = nextInt();
-        print(solve(nums, n, x));
+        print(solve(nums, n));
         flush();
     }
 
-    private static int solve(int nums[], int n, int x) {
-        // sort
+    private static long solve(int nums[], int n) {
         Arrays.sort(nums);
-        // always prove swapping any out-of-order adjacent pair never improves the answer
-        int ans = 0, l = 0, r = n-1;
-        // sort by right key
-        while(l <= r) {
-            if(nums[l] + nums[r] <= x) {
-                l++;
-            }
-            r--;
-            ans++;
-        }
+        long median = nums[n/2], ans = 0l;
+        if((n & 1) == 0)
+            median = (median + nums[(n/2)-1]) / 2;
+        for(int i = 0; i < n; i++)
+            ans += Math.abs(nums[i] - median);
         return ans;
     }
 }
