@@ -10,7 +10,7 @@ A pattern where the problem asks to find the count of sub-arrays of specific con
     - Array Size N
 
 ##### Purpose
-    - Convert the Data array D1 into Prefix array P, of size N+1, to compress [L, R] sliding sum into two pointers L and R
+    - Convert the Data array D1 into Prefix array P, of size N+1, to compress [L, R] sum into two pointers relationship of P<sub>r</sub> and P<sub>l</sub>
 
 ##### Technique
     - Use addition to convert D1 to P
