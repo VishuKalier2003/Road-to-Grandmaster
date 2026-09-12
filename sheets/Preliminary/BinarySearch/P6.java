@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 
-public class P5 {
+public class P6 {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
     private static final PrintWriter PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -48,44 +48,40 @@ public class P5 {
     public static void flush() {PW.print(OUT); PW.flush();}
 
     public static void main(String args[]) throws IOException {
-        int n = nextInt(), k = nextInt();
-        int nums[] = new int[n];
-        long l = 0l, h = 0l;
+        int n = nextInt(), t = nextInt();
+        long nums[] = new long[n];
+        long h = 0l;
         for(int i = 0; i < n; i++) {
             nums[i] = nextInt();
-            l = Math.max(l, nums[i]);
-            h += nums[i];
+            h = Math.max(h, nums[i]);
         }
-        print(solve(n, k, nums, l, h));
+        // set the lower and upper boundaries wisely
+        print(solve(t, nums, 1, h*t));
         flush();
     }
 
-    public static long solve(int n, int k, int nums[], long l, long h) {
-        long ans = 0l;
-        while(l <= h) {
-            long mid = l + (h-l)/2;
-            if(possible(n, k, nums, mid)) {
+    public static long solve(int k, long nums[], long l, long r) {
+        long ans = r;
+        while(l <= r) {
+            long mid = l + (r-l)/2;
+            if(possible(k, nums, mid)) {
                 ans = mid;
-                h = mid - 1;
+                r = mid - 1;
             } else
                 l = mid + 1;
         }
         return ans;
     }
 
-    public static boolean possible(int n, int k, int nums[], long mid) {
-        long sub[] = new long[k];
-        int i = 0;
-        for(int num : nums) {
-            if(sub[i] + num <= mid)
-                sub[i] += num;
-            else {
-                i++;
-                if(i == k)
-                    return false;
-                sub[i] += num;
-            }
+    public static boolean possible(int k, long nums[], long mid) {
+        long c = 0;
+        for(long num : nums) {
+            // count the product made by a machine in given time mid
+            k -= (mid / num);       // always better to subtract than add (prevents overflow)
+            // If the required number reached then return true
+            if(k <= 0)
+                return true;
         }
-        return true;
+        return false;
     }
 }

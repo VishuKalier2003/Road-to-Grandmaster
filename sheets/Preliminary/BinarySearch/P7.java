@@ -6,8 +6,9 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.util.Arrays;
 
-public class P5 {
+public class P7 {
     private static final DataInputStream IN = new DataInputStream(new BufferedInputStream(System.in, 1 << 16));
     private static final StringBuilder OUT = new StringBuilder();
     private static final PrintWriter PW = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
@@ -48,44 +49,45 @@ public class P5 {
     public static void flush() {PW.print(OUT); PW.flush();}
 
     public static void main(String args[]) throws IOException {
-        int n = nextInt(), k = nextInt();
-        int nums[] = new int[n];
-        long l = 0l, h = 0l;
-        for(int i = 0; i < n; i++) {
-            nums[i] = nextInt();
-            l = Math.max(l, nums[i]);
-            h += nums[i];
+        int t = nextInt();
+        while(t-- > 0) {
+            int n = nextInt(), k = nextInt();
+            int nums[] = new int[n];
+            for(int i = 0; i < n; i++)
+                nums[i] = nextInt();
+            println(solve(k, nums));
         }
-        print(solve(n, k, nums, l, h));
         flush();
     }
 
-    public static long solve(int n, int k, int nums[], long l, long h) {
-        long ans = 0l;
-        while(l <= h) {
-            long mid = l + (h-l)/2;
-            if(possible(n, k, nums, mid)) {
+    private static int solve(int k, int nums[]) {
+        Arrays.sort(nums);
+        int max = 0, min = 0, ans = -1;
+        for(int num : nums)
+            max = Math.max(max, num);
+        while(min <= max) {
+            int mid = (min + max) >>> 1;
+            if(possible(k, nums, mid)) {
                 ans = mid;
-                h = mid - 1;
-            } else
-                l = mid + 1;
+                min = mid + 1;
+            }
+            else
+                max = mid - 1;
         }
         return ans;
     }
 
-    public static boolean possible(int n, int k, int nums[], long mid) {
-        long sub[] = new long[k];
-        int i = 0;
+    private static boolean possible(int k, int nums[], int mid) {
+        int s = nums[0];
+        k--;    // Place first cow, now we need to place k-1 more cows
         for(int num : nums) {
-            if(sub[i] + num <= mid)
-                sub[i] += num;
-            else {
-                i++;
-                if(i == k)
-                    return false;
-                sub[i] += num;
+            if(num - s >= mid) {
+                s = num;
+                k--;
             }
+            if(k <= 0)
+                return true;
         }
-        return true;
+        return k <= 0;
     }
 }
