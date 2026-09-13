@@ -1,4 +1,4 @@
-### Pair Matching (Two Pointers)
+#### Pair Matching (Two Pointers)
 
 A pattern of pairing elements from a set under a monotone feasibility constraint, where the goal is to satisfy rule F to the maximum possible
 
