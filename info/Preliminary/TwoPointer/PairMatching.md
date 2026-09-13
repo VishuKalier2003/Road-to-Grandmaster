@@ -24,4 +24,4 @@ Count of maximum number of valid disjoint pairs under the rule F
 ##### Variations
 There are multiple variations for the pair matching pattern on basis of the feasibility rule F such as
 - Threshold Pairing
-    | Rule is a + b <= X and we just need to do two pointer greedy post sorting
+    > Rule is a + b <= X and we just need to do two pointer greedy post sorting
